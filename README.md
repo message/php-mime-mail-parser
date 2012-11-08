@@ -7,7 +7,7 @@ PHP 5.3+ Fork of  http://code.google.com/p/php-mime-mail-parser
 ## Composer 
 ```json
 "require": {
-	"messaged/php-mime-mail-parser": "*"
+	"messaged/php-mime-mail-parser": "dev-master"
 }
 ```
 ## Usage example
