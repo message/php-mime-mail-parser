@@ -2,6 +2,8 @@
 
 namespace MimeMailParser;
 
+use MimeMailParser\Exception\RuntimeException;
+
 /**
  * Fast Mime Mail parser Class using PHP's MailParse Extension
  * 
@@ -94,8 +96,7 @@ class Parser
 				fseek($tmp_fp, 0);
 				$this->stream = & $tmp_fp;
 			} else {
-				throw new Exception('Could not create temporary files for attachments. Your tmp directory may be unwritable by PHP.');
-				return false;
+				throw new RuntimeException('Could not create temporary files for attachments. Your tmp directory may be unwritable by PHP.');
 			}
 			fclose($stream);
 		} else {
@@ -150,7 +151,7 @@ class Parser
 		if (isset($this->parts[1])) {
 			return $this->getPartHeaders($this->parts[1]);
 		} else {
-			throw new Exception('Parser::setPath() or Parser::setText() must be called before retrieving email headers.');
+			throw new RuntimeException('Parser::setPath() or Parser::setText() must be called before retrieving email headers.');
 		}
 		return false;
 	}
@@ -164,7 +165,7 @@ class Parser
 		if (isset($this->parts[1])) {
 			return $this->getPartHeaderRaw($this->parts[1]);
 		} else {
-			throw new Exception('Parser::setPath() or Parser::setText() must be called before retrieving email headers.');
+			throw new RuntimeException('Parser::setPath() or Parser::setText() must be called before retrieving email headers.');
 		}
 		return false;
 	}
@@ -182,7 +183,7 @@ class Parser
 				return $headers[$name];
 			}
 		} else {
-			throw new Exception('Parser::setPath() or Parser::setText() must be called before retrieving email headers.');
+			throw new RuntimeException('Parser::setPath() or Parser::setText() must be called before retrieving email headers.');
 		}
 		return false;
 	}
@@ -207,7 +208,7 @@ class Parser
 				}
 			}
 		} else {
-			throw new Exception('Invalid type specified for Parser::getMessageBody. "type" can either be text or html.');
+			throw new RuntimeException('Invalid type specified for Parser::getMessageBody. "type" can either be text or html.');
 		}
 		return $body;
 	}
@@ -231,7 +232,7 @@ class Parser
 				}
 			}
 		} else {
-			throw new Exception('Invalid type specified for Parser::getMessageBody. "type" can either be text or html.');
+			throw new RuntimeException('Invalid type specified for Parser::getMessageBody. "type" can either be text or html.');
 		}
 		return $headers;
 	}
@@ -326,7 +327,7 @@ class Parser
 		} else if ($this->data) {
 			$header = $this->getPartHeaderFromText($part);
 		} else {
-			throw new Exception('Parser::setPath() or Parser::setText() must be called before retrieving email parts.');
+			throw new RuntimeException('Parser::setPath() or Parser::setText() must be called before retrieving email parts.');
 		}
 		return $header;
 	}
@@ -344,7 +345,7 @@ class Parser
 		} else if ($this->data) {
 			$body = $this->getPartBodyFromText($part);
 		} else {
-			throw new Exception('Parser::setPath() or Parser::setText() must be called before retrieving email parts.');
+			throw new RuntimeException('Parser::setPath() or Parser::setText() must be called before retrieving email parts.');
 		}
 		return $body;
 	}
@@ -437,8 +438,7 @@ class Parser
 			}
 			fseek($temp_fp, 0, SEEK_SET);
 		} else {
-			throw new Exception('Could not create temporary files for attachments. Your tmp directory may be unwritable by PHP.');
-			return false;
+			throw new RuntimeException('Could not create temporary files for attachments. Your tmp directory may be unwritable by PHP.');
 		}
 		return $temp_fp;
 	}
