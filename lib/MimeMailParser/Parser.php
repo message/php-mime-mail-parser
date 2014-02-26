@@ -202,7 +202,7 @@ class Parser
 		);
 		if (in_array($type, array_keys($mime_types))) {
 			foreach ($this->parts as $part) {
-				if ($this->getPartContentType($part) == $mime_types[$type]) {
+				if ($this->getPartContentType($part) == $mime_types[$type] && !$this->getPartContentDisposition($part)) {
 					$headers = $this->getPartHeaders($part);
 					$body = $this->decode($this->getPartBody($part), array_key_exists('content-transfer-encoding', $headers) ? $headers['content-transfer-encoding'] : '');
 				}
