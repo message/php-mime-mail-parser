@@ -19,8 +19,8 @@
 	],
 	"require": {
 		"php": ">=5.3",
-        "ext-mbstring" : "*",
-        "ext-mailparse" : "*"
+		"ext-mbstring": "*",
+		"ext-mailparse": "*"
 	},
 	"autoload": {
 		"psr-0": {
