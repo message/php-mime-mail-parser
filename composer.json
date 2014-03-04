@@ -18,7 +18,9 @@
 		}
 	],
 	"require": {
-		"php": ">=5.3"
+		"php": ">=5.3",
+        "ext-mbstring" : "*",
+        "ext-mailparse" : "*"
 	},
 	"autoload": {
 		"psr-0": {
