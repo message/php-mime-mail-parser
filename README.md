@@ -3,13 +3,16 @@ php-mime-mail-parser
 
 PHP 5.3+ Fork of  http://code.google.com/p/php-mime-mail-parser
 
+## Contributions 
+Feel free to contribute. 
 
 ## Composer 
 ```json
 "require": {
-	"messaged/php-mime-mail-parser": "v1.0.1"
+	"messaged/php-mime-mail-parser": "v1.0.2"
 }
 ```
+
 ## Usage example
 
 ```php
