@@ -31,6 +31,11 @@ class Parser
 	public $data;
 
 	/**
+	 * Parts array
+	 */
+	public $parts;
+
+	/**
 	 * Stream Resources for Attachments
 	 */
 	public $attachment_streams;
