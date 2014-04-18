@@ -72,7 +72,7 @@ class Parser
 	/**
 	 * Set the file path we use to get the email text
 	 * @return Object MimeMailParser Instance
-	 * @param $mail_path Object
+	 * @param $path Object
 	 */
 	public function setPath($path)
 	{
@@ -275,20 +275,6 @@ class Parser
 	{
 		if (isset($part['headers'])) {
 			return $part['headers'];
-		}
-		return false;
-	}
-
-	/**
-	 * Return a Specific Header for a MIME part
-	 * @return Array
-	 * @param $part Array
-	 * @param $header String Header Name
-	 */
-	private function getPartHeader($part, $header)
-	{
-		if (isset($part['headers'][$header])) {
-			return $part['headers'][$header];
 		}
 		return false;
 	}
