@@ -1,6 +1,7 @@
 ####v1.0.3
 
 [FIX] Added parts variable. Variable was not declared which can lead to annoying error messages in logs [#3](https://github.com/message/php-mime-mail-parser/pull/3) 
+
 [FIX] Removed unused pivate `getPartHeader()` method
 
 ####v1.0.2
