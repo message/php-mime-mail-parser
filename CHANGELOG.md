@@ -1,3 +1,7 @@
+####v1.0.4
+
+[FIX] Some private methods changed to protected. Fixed attechment stream 2028 characters issue [#4](https://github.com/message/php-mime-mail-parser/pull/4) 
+
 ####v1.0.3
 
 [FIX] Added parts variable. Variable was not declared which can lead to annoying error messages in logs [#3](https://github.com/message/php-mime-mail-parser/pull/3) 
