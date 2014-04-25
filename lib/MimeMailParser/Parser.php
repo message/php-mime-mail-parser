@@ -271,7 +271,7 @@ class Parser
 	 * @return Array
 	 * @param $part Array
 	 */
-	private function getPartHeaders($part)
+	protected function getPartHeaders($part)
 	{
 		if (isset($part['headers'])) {
 			return $part['headers'];
@@ -284,7 +284,7 @@ class Parser
 	 * @return String
 	 * @param $part Array
 	 */
-	private function getPartContentType($part)
+	protected function getPartContentType($part)
 	{
 		if (isset($part['content-type'])) {
 			return $part['content-type'];
@@ -297,7 +297,7 @@ class Parser
 	 * @return String
 	 * @param $part Array
 	 */
-	private function getPartContentDisposition($part)
+	protected function getPartContentDisposition($part)
 	{
 		if (isset($part['content-disposition'])) {
 			return $part['content-disposition'];
@@ -310,7 +310,7 @@ class Parser
 	 * @return String
 	 * @param $part Object
 	 */
-	private function getPartHeaderRaw(&$part)
+	protected function getPartHeaderRaw(&$part)
 	{
 		$header = '';
 		if ($this->stream) {
@@ -328,7 +328,7 @@ class Parser
 	 * @return String
 	 * @param $part Object
 	 */
-	private function getPartBody(&$part)
+	protected function getPartBody(&$part)
 	{
 		$body = '';
 		if ($this->stream) {
@@ -346,7 +346,7 @@ class Parser
 	 * @return String Mime Header Part
 	 * @param $part Array
 	 */
-	private function getPartHeaderFromFile(&$part)
+	protected function getPartHeaderFromFile(&$part)
 	{
 		$start = $part['starting-pos'];
 		$end = $part['starting-pos-body'];
@@ -360,7 +360,7 @@ class Parser
 	 * @return String Mime Body Part
 	 * @param $part Array
 	 */
-	private function getPartBodyFromFile(&$part)
+	protected function getPartBodyFromFile(&$part)
 	{
 		$start = $part['starting-pos-body'];
 		$end = $part['ending-pos-body'];
@@ -374,7 +374,7 @@ class Parser
 	 * @return String Mime Header Part
 	 * @param $part Array
 	 */
-	private function getPartHeaderFromText(&$part)
+	protected function getPartHeaderFromText(&$part)
 	{
 		$start = $part['starting-pos'];
 		$end = $part['starting-pos-body'];
@@ -387,7 +387,7 @@ class Parser
 	 * @return String Mime Body Part
 	 * @param $part Array
 	 */
-	private function getPartBodyFromText(&$part)
+	protected function getPartBodyFromText(&$part)
 	{
 		$start = $part['starting-pos-body'];
 		$end = $part['ending-pos-body'];
@@ -400,7 +400,7 @@ class Parser
 	 * @return String Mime Body Part
 	 * @param $part Array
 	 */
-	private function getAttachmentStream(&$part)
+	protected function getAttachmentStream(&$part)
 	{
 		$temp_fp = tmpfile();
 
@@ -414,11 +414,12 @@ class Parser
 				$len = $end - $start;
 				$written = 0;
 				$write = 2028;
-				$body = '';
 				while ($written < $len) {
-					if (($written + $write < $len)) {
-						$write = $len - $written;
-					}
+                    if (($written + $write < $len)) {
+                        $write = $len - $written;
+                    } else if ($len < $write) {
+                        $write = $len;
+                    }
 					$part = fread($this->stream, $write);
 					fwrite($temp_fp, $this->decode($part, $encoding));
 					$written += $write;
