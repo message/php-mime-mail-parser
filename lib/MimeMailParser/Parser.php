@@ -414,11 +414,12 @@ class Parser
 				$len = $end - $start;
 				$written = 0;
 				$write = 2028;
-				$body = '';
 				while ($written < $len) {
-					if (($written + $write < $len)) {
-						$write = $len - $written;
-					}
+                    if (($written + $write < $len)) {
+                        $write = $len - $written;
+                    } else if ($len < $write) {
+                        $write = $len;
+                    }
 					$part = fread($this->stream, $write);
 					fwrite($temp_fp, $this->decode($part, $encoding));
 					$written += $write;
