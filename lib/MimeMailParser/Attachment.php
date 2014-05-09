@@ -131,9 +131,9 @@ class Attachment
 	}
 
 	/**
-	 * Allow the properties 
+	 * Allow the properties
 	 * 	\MimeMailParser\Attachment::$name,
-	 * 	\MimeMailParser\Attachment::$extension 
+	 * 	\MimeMailParser\Attachment::$extension
 	 * to be retrieved as public properties
 	 * @param $name Object
 	 */
@@ -150,8 +150,8 @@ class Attachment
 
 	/**
 	 * Writes attachment into system
-	 * 
-	 * @param string $path 
+	 *
+	 * @param string $path
 	 * @param string $filename
 	 */
 	public function saveAttachment($path, $filename = null)
@@ -166,7 +166,7 @@ class Attachment
 			$filename = $this->getFilename();
 		}
 
-		$path = $path . $filename;
+		$path = $path . '/' . $filename;
 
 		return file_put_contents($path, $this->getContent());
 	}
