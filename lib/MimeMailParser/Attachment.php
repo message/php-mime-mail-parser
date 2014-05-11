@@ -166,7 +166,7 @@ class Attachment
 			$filename = $this->getFilename();
 		}
 
-		$path = $path . '/' . $filename;
+		$path = rtrim($path, '/') . '/' . $filename;
 
 		return file_put_contents($path, $this->getContent());
 	}
