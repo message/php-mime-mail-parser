@@ -9,7 +9,7 @@ Feel free to contribute.
 ## Composer
 ```json
 "require": {
-	"messaged/php-mime-mail-parser": "v1.0.4"
+	"messaged/php-mime-mail-parser": "v1.0.5"
 }
 ```
 

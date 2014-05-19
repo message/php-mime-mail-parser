@@ -1,3 +1,7 @@
+####v1.0.5
+
+[ENHANCEMENT] Added `Attachment` usage example to documentation [#5](https://github.com/message/php-mime-mail-parser/pull/5) 
+
 ####v1.0.4
 
 [FIX] Some private methods changed to protected. Fixed attechment stream 2028 characters issue [#4](https://github.com/message/php-mime-mail-parser/pull/4) 
