@@ -255,7 +255,7 @@ class Parser
 			$disposition = $this->getPartContentDisposition($part);
 			if (in_array($disposition, $dispositions)) {
 				$attachments[] = new Attachment(
-						$part['disposition-filename'],
+						!empty($part['disposition-filename']) ? $part['disposition-filename'] : $part['content-name'],
 						$this->getPartContentType($part),
 						$this->getAttachmentStream($part),
 						$disposition,
