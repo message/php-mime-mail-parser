@@ -1,3 +1,7 @@
+####v1.0.6
+
+[FIX] try content-name if disposition-filename isn't set [#6](https://github.com/message/php-mime-mail-parser/pull/6) 
+
 ####v1.0.5
 
 [ENHANCEMENT] Added `Attachment` usage example to documentation [#5](https://github.com/message/php-mime-mail-parser/pull/5) 
