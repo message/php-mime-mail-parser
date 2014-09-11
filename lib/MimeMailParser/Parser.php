@@ -203,7 +203,8 @@ class Parser
 		$body = false;
 		$mime_types = array(
 			'text' => 'text/plain',
-			'html' => 'text/html'
+			'html' => 'text/html',
+			'calendar' => 'text/calendar'
 		);
 		if (in_array($type, array_keys($mime_types))) {
 			foreach ($this->parts as $part) {
@@ -228,7 +229,8 @@ class Parser
 		$headers = false;
 		$mime_types = array(
 			'text' => 'text/plain',
-			'html' => 'text/html'
+			'html' => 'text/html',
+			'calendar' => 'text/calendar'
 		);
 		if (in_array($type, array_keys($mime_types))) {
 			foreach ($this->parts as $part) {
