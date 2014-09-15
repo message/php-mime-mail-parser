@@ -253,7 +253,20 @@ class Parser
 		$dispositions = array("attachment", "inline");
 		foreach ($this->parts as $part) {
 			$disposition = $this->getPartContentDisposition($part);
-			if (in_array($disposition, $dispositions)) {
+			if (in_array($disposition, $dispositions) || isset($part['content-id']) ) {
+				if ( !isset($part['disposition-filename']) &&
+					(
+						isset($part['content-type']) && $part['content-type'] != 'text/plain' &&
+						isset($part['content-disposition']) && $part['content-disposition'] == "inline"
+					)
+				) {
+					$part['disposition-filename'] = md5(uniqid());
+					if ( isset($part['content-name']) )
+					{
+						$part['disposition-filename'] = $part['content-name'];
+					}
+				}
+
 				$attachments[] = new Attachment(
 						!empty($part['disposition-filename']) ? $part['disposition-filename'] : $part['content-name'],
 						$this->getPartContentType($part),
