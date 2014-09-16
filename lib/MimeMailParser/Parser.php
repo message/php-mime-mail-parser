@@ -253,7 +253,7 @@ class Parser
 		$dispositions = array("attachment", "inline");
 		foreach ($this->parts as $part) {
 			$disposition = $this->getPartContentDisposition($part);
-			if (in_array($disposition, $dispositions)) {
+			if (in_array($disposition, $dispositions) || isset($part['content-id']) ) {
 				$attachments[] = new Attachment(
 						!empty($part['disposition-filename']) ? $part['disposition-filename'] : $part['content-name'],
 						$this->getPartContentType($part),
