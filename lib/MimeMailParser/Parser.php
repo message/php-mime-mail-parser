@@ -255,7 +255,7 @@ class Parser
 			$disposition = $this->getPartContentDisposition($part);
 			if (in_array($disposition, $dispositions)) {
 				$name = (!empty($part['disposition-filename'])) ? $part['disposition-filename'] : false;
-				$name = (!$name && !empty($part['content-name'])) ? $part['content-name'] : false;
+				$name = (!$name && !empty($part['content-name'])) ? $part['content-name'] : 'File.zip';
 				$attachments[] = new Attachment(
 						$name,
 						$this->getPartContentType($part),
