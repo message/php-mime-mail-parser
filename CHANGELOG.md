@@ -1,3 +1,7 @@
+####v1.0.7
+
+[FIX] getMessageBody does not handle Content-disposition inline [#11](https://github.com/message/php-mime-mail-parser/pull/11) 
+
 ####v1.0.6
 
 [FIX] try content-name if disposition-filename isn't set [#6](https://github.com/message/php-mime-mail-parser/pull/6) 
