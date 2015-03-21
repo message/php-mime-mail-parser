@@ -1,6 +1,8 @@
 php-mime-mail-parser
 ====================
 
+# THIS REPOSITORY IS DEPRECATED. MOVED TO https://github.com/php-mime-mail-parser/php-mime-mail-parser
+
 PHP 5.3+ Fork of  http://code.google.com/p/php-mime-mail-parser
 
 ## Contributions
