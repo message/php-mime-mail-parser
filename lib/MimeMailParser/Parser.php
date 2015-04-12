@@ -6,7 +6,7 @@ use MimeMailParser\Exception\RuntimeException;
 
 /**
  * Fast Mime Mail parser Class using PHP's MailParse Extension
- * 
+ *
  * @author gabe@fijiwebdesign.com
  * @url http://www.fijiwebdesign.com/
  * @license http://creativecommons.org/licenses/by-sa/3.0/us/
@@ -42,7 +42,7 @@ class Parser
 
 	/**
 	 * Inialize some stuff
-	 * @return 
+	 * @return
 	 */
 	public function __construct()
 	{
@@ -119,7 +119,7 @@ class Parser
 
 	/**
 	 * Set the email text
-	 * @return Object MimeMailParser Instance 
+	 * @return Object MimeMailParser Instance
 	 * @param $data String
 	 */
 	public function setText($data)
@@ -254,8 +254,10 @@ class Parser
 		foreach ($this->parts as $part) {
 			$disposition = $this->getPartContentDisposition($part);
 			if (in_array($disposition, $dispositions)) {
+				$name = (!empty($part['disposition-filename'])) ? $part['disposition-filename'] : false;
+				$name = (!$name && !empty($part['content-name'])) ? $part['content-name'] : 'File.zip';
 				$attachments[] = new Attachment(
-						!empty($part['disposition-filename']) ? $part['disposition-filename'] : $part['content-name'],
+						$name,
 						$this->getPartContentType($part),
 						$this->getAttachmentStream($part),
 						$disposition,
